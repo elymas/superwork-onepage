@@ -61,7 +61,7 @@ export function AppCard({ app, reduced }: Props) {
         {app.verified ? (
           <a className="app-card__qr" href={app.url} target="_blank" rel="noreferrer" aria-label={`${app.name} 열기`}>
             <span className="app-card__qr-frame">
-              <QRCodeSVG value={app.url} size={92} bgColor="#ffffff" fgColor="#06070d" level="M" marginSize={2} />
+              <QRCodeSVG value={app.url} size={96} bgColor="#ffffff" fgColor="#06070d" level="M" marginSize={2} />
             </span>
             <span className="app-card__qr-label">{hovered ? "탭하여 열기 →" : "QR 스캔"}</span>
           </a>
