@@ -48,7 +48,9 @@ export function AppCard({ app, reduced }: Props) {
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="app-card__top">
-        <img className="app-card__icon" src={iconUrl(app.icon)} alt={`${app.name} 아이콘`} width={72} height={72} loading="lazy" />
+        {app.icon ? (
+          <img className="app-card__icon" src={iconUrl(app.icon)} alt={`${app.name} 아이콘`} width={72} height={72} loading="lazy" />
+        ) : null}
         <div>
           <h3 className="app-card__name">{app.name}</h3>
           <p className="app-card__tagline">{app.tagline}</p>
@@ -58,7 +60,7 @@ export function AppCard({ app, reduced }: Props) {
       {app.desc ? <p className="app-card__desc">{app.desc}</p> : null}
 
       <div className="app-card__footer">
-        {app.verified ? (
+        {app.verified && app.url ? (
           <a className="app-card__qr" href={app.url} target="_blank" rel="noreferrer" aria-label={`${app.name} 열기`}>
             <span className="app-card__qr-frame">
               <QRCodeSVG value={app.url} size={96} bgColor="#ffffff" fgColor="#06070d" level="M" marginSize={2} />
@@ -71,6 +73,39 @@ export function AppCard({ app, reduced }: Props) {
             링크 준비 중
           </div>
         )}
+      </div>
+    </motion.div>
+  );
+}
+
+/** The 8th "next lineup" slot — invites an idea submission instead of showing a QR.
+ *  No URL (submission is via the internal groupware form), so the CTA is a static
+ *  badge rather than a link, matching the outro CTA convention. Dispatched from
+ *  Showcase (not via an early return in AppCard) to keep both components' hooks
+ *  unconditional. */
+export function ComingSoonCard({ app, reduced }: Props) {
+  return (
+    <motion.div
+      className="app-card app-card--soon"
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <div className="app-card__top">
+        <span className={reduced ? "app-card__soon-plus" : "app-card__soon-plus app-card__soon-plus--pulse"} aria-hidden>
+          +
+        </span>
+        <div>
+          <h3 className="app-card__name">{app.name}</h3>
+          <p className="app-card__tagline app-card__tagline--soon">{app.tagline}</p>
+        </div>
+      </div>
+
+      {app.desc ? <p className="app-card__desc">{app.desc}</p> : null}
+
+      <div className="app-card__footer">
+        <div className="app-card__soon-cta">{app.cta ?? "지금 아이디어 제출하기"}</div>
       </div>
     </motion.div>
   );

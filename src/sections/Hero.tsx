@@ -46,14 +46,16 @@ export function Hero() {
         <h1 className="hero__title">{hero.title}</h1>
         <p className="hero__subtitle">{hero.subtitle}</p>
 
-        <div className="hero__stats">
-          {hero.stats.map((s) => (
-            <div key={s.label}>
-              <div className="hero__stat-value">{s.value}</div>
-              <div className="hero__stat-label">{s.label}</div>
-            </div>
-          ))}
-        </div>
+        {hero.stats.length > 0 ? (
+          <div className="hero__stats">
+            {hero.stats.map((s) => (
+              <div key={s.label}>
+                <div className="hero__stat-value">{s.value}</div>
+                <div className="hero__stat-label">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        ) : null}
 
         <div style={{ marginTop: 40 }}>
           <button className="btn" onClick={scrollToWorkflow}>

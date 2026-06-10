@@ -17,8 +17,8 @@
   max-width: 900px;
   max-height: 900px;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(77, 124, 255, 0.18) 0%, transparent 62%);
-  filter: blur(30px);
+  background: radial-gradient(circle, rgba(90, 155, 208, 0.22) 0%, transparent 62%);
+  filter: blur(40px);
   pointer-events: none;
 }
 
@@ -74,7 +74,7 @@
     box-shadow: 0 10px 40px -12px var(--accent-glow);
   }
   50% {
-    box-shadow: 0 10px 60px -6px var(--accent-glow), 0 0 0 6px rgba(77, 124, 255, 0.12);
+    box-shadow: 0 10px 60px -6px var(--accent-glow), 0 0 0 6px var(--accent-soft);
   }
 }
 

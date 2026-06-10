@@ -47,14 +47,22 @@ export interface WorkflowContent {
   link: string;
 }
 
+export interface ShowcaseContent {
+  title: string;
+  lead: string;
+}
+
 export interface AppItem {
   id: string;
   name: string;
-  icon: string;
+  icon: string | null;
   tagline: string;
   desc: string;
-  url: string;
+  url: string | null;
   verified: boolean;
+  /** Placeholder "next lineup" card inviting an idea submission. */
+  comingSoon?: boolean;
+  cta?: string;
 }
 
 export interface OutroContent {
@@ -67,6 +75,7 @@ export interface SiteContent {
   hero: HeroContent;
   ideathon: IdeathonContent;
   workflow: WorkflowContent;
+  showcase: ShowcaseContent;
   apps: AppItem[];
   outro: OutroContent;
 }

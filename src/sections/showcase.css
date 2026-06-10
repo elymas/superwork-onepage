@@ -5,13 +5,6 @@
   gap: 20px;
 }
 
-/* 7 cards: 4 on top row, 3 centered below on wide screens. */
-@media (min-width: 1024px) {
-  .showcase__grid > :nth-child(5) {
-    grid-column: 1 / 2;
-  }
-}
-
 .app-card {
   display: flex;
   flex-direction: column;
@@ -20,13 +13,14 @@
   border-radius: var(--radius-lg);
   background: var(--surface);
   border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
   transform-style: preserve-3d;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .app-card:hover {
   border-color: var(--line-strong);
-  box-shadow: 0 24px 60px -28px rgba(77, 124, 255, 0.55);
+  box-shadow: 0 28px 60px -30px rgba(47, 90, 130, 0.4);
 }
 
 .app-card__top {
@@ -77,6 +71,7 @@
   display: inline-flex;
   padding: 8px;
   background: #fff;
+  border: 1px solid var(--line);
   border-radius: 12px;
   line-height: 0;
 }
@@ -109,6 +104,75 @@
   height: 8px;
   border-radius: 50%;
   background: var(--text-faint);
+}
+
+/* ---- 8th "next lineup" coming-soon card ---- */
+.app-card--soon {
+  background: linear-gradient(160deg, rgba(233, 241, 248, 0.7), rgba(255, 255, 255, 0.4));
+  border: 1.5px dashed var(--accent);
+  box-shadow: none;
+}
+
+.app-card--soon:hover {
+  border-color: var(--accent-bright);
+  box-shadow: 0 24px 56px -30px var(--accent-glow);
+}
+
+.app-card__soon-plus {
+  width: 72px;
+  height: 72px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  border: 1.5px dashed var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-bright);
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.app-card__soon-plus--pulse {
+  animation: soon-pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes soon-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 var(--accent-soft);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(90, 155, 208, 0.06);
+  }
+}
+
+.app-card__tagline--soon {
+  color: var(--text-dim);
+}
+
+.app-card__soon-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: var(--accent-bright);
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  box-shadow: 0 14px 36px -16px var(--accent-glow);
+}
+
+.app-card__soon-cta::before {
+  content: "→";
+  order: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-card__soon-plus--pulse {
+    animation: none;
+  }
 }
 
 @media (max-width: 1023px) {

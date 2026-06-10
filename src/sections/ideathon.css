@@ -14,8 +14,8 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--accent-lime);
-  box-shadow: 0 0 12px var(--accent-lime);
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
 }
 
 .ideathon__timeline {
@@ -38,7 +38,7 @@
   position: absolute;
   inset: 0;
   transform-origin: top;
-  background: linear-gradient(var(--accent), var(--accent-lime));
+  background: linear-gradient(var(--accent), var(--accent-deep));
 }
 
 .ideathon__steps {
@@ -89,9 +89,10 @@
 
 .ideathon__step-duration {
   font-size: 0.85rem;
-  color: var(--accent-lime);
+  color: var(--accent-bright);
   padding: 2px 10px;
-  border: 1px solid rgba(198, 255, 77, 0.3);
+  border: 1px solid var(--line-strong);
+  background: var(--accent-soft);
   border-radius: 999px;
 }
 
@@ -114,6 +115,7 @@
   border-radius: var(--radius-lg);
   background: var(--surface);
   border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
 }
 
 .ideathon__panel-title {
@@ -180,7 +182,7 @@
   gap: 20px;
   padding: 28px;
   border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, rgba(77, 124, 255, 0.08), rgba(198, 255, 77, 0.04));
+  background: linear-gradient(135deg, rgba(90, 155, 208, 0.1), rgba(234, 239, 158, 0.18));
   border: 1px solid var(--line);
 }
 

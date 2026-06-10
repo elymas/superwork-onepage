@@ -12,9 +12,9 @@ export default function Scene() {
       gl={{ antialias: true, alpha: true }}
       camera={{ position: [0, 0, 6], fov: 55 }}
     >
-      <ambientLight intensity={0.6} />
-      <pointLight position={[6, 6, 6]} intensity={1.2} color="#6f9bff" />
-      <pointLight position={[-6, -3, 2]} intensity={0.8} color="#c6ff4d" />
+      <ambientLight intensity={0.95} />
+      <pointLight position={[6, 6, 6]} intensity={1.1} color="#bfe0f5" />
+      <pointLight position={[-6, -3, 2]} intensity={0.7} color="#f3f7c4" />
       <Suspense fallback={null}>
         <CardField />
       </Suspense>

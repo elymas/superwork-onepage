@@ -54,12 +54,13 @@
   padding: 36px;
   background: var(--surface);
   border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
 }
 
 .workflow__intro-card {
-  background: linear-gradient(150deg, rgba(77, 124, 255, 0.16), rgba(198, 255, 77, 0.06));
+  background: linear-gradient(150deg, rgba(90, 155, 208, 0.18), rgba(234, 239, 158, 0.22));
   border-color: var(--line-strong);
 }
 
@@ -104,8 +105,9 @@
   display: inline-block;
   font-family: "SFMono-Regular", ui-monospace, Menlo, monospace;
   font-size: 0.9rem;
-  color: var(--accent-lime);
-  background: rgba(0, 0, 0, 0.3);
+  color: var(--accent-deep);
+  background: var(--accent-soft);
+  border: 1px solid var(--line);
   padding: 4px 10px;
   border-radius: 8px;
 }

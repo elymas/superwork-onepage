@@ -103,7 +103,7 @@ export function Ideathon() {
             <p>{ideathon.judging.round1}</p>
           </div>
           <div>
-            <span className="ideathon__judging-label">2차 · 프로토타입</span>
+            <span className="ideathon__judging-label">2차 · 앱 시연</span>
             <p>{ideathon.judging.round2}</p>
           </div>
           <div>

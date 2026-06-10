@@ -1,24 +1,32 @@
 :root {
-  /* Dark base + single strong accent (electric blue), with a secondary lime for variation. */
-  --bg: #06070d;
-  --bg-soft: #0c0e18;
-  --surface: #12141f;
-  --surface-2: #181b29;
-  --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.16);
+  /* Light "Cloud Dancer" base — warm off-white + clear-sky accents. Pantone 2026 11-4201. */
+  --bg: #fafaf7;
+  --bg-soft: #e9f1f8;
+  --surface: #ffffff;
+  --surface-2: #f1f5fa;
+  --line: rgba(30, 37, 48, 0.08);
+  --line-strong: rgba(30, 37, 48, 0.16);
 
-  --text: #f4f6fb;
-  --text-dim: #aab0c4;
-  --text-faint: #6b7187;
+  --text: #1e2530;
+  --text-dim: #4a5468;
+  --text-faint: #8a93a6;
 
-  --accent: #4d7cff;
-  --accent-bright: #6f9bff;
-  --accent-lime: #c6ff4d;
-  --accent-glow: rgba(77, 124, 255, 0.45);
+  /* Soft sky-blue accent. -bright is the darker, text-safe variant (AA on white). */
+  --accent: #5a9bd0;
+  --accent-bright: #2f7bb8;
+  --accent-deep: #1f5e91;
+  /* Decorative pale lemon — never used for text. */
+  --accent-lemon: #eaef9e;
+  --accent-glow: rgba(90, 155, 208, 0.32);
+  --accent-soft: rgba(90, 155, 208, 0.12);
 
   --radius: 18px;
   --radius-lg: 26px;
   --maxw: 1180px;
+
+  /* Soft, airy shadows: large blur, low opacity, cool tint. */
+  --shadow-sm: 0 8px 30px -16px rgba(47, 90, 130, 0.28);
+  --shadow-md: 0 24px 60px -32px rgba(47, 90, 130, 0.3);
 
   --font: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
     system-ui, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
@@ -112,15 +120,15 @@ p {
   font-size: 1rem;
   cursor: pointer;
   border: 1px solid transparent;
-  background: var(--accent);
+  background: var(--accent-bright);
   color: #fff;
   transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
-  box-shadow: 0 10px 40px -12px var(--accent-glow);
+  box-shadow: 0 14px 40px -14px var(--accent-glow);
 }
 
 .btn:hover {
   transform: translateY(-2px);
-  background: var(--accent-bright);
+  background: var(--accent-deep);
 }
 
 .btn-ghost {
@@ -131,7 +139,7 @@ p {
 }
 
 .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--accent-soft);
 }
 
 .visually-hidden {

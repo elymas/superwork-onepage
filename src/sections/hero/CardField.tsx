@@ -4,9 +4,13 @@ import * as THREE from "three";
 
 const TOTAL = 50;
 const LAUNCHED = 7;
-const ACCENT = new THREE.Color("#4d7cff");
-const LIME = new THREE.Color("#c6ff4d");
-const DIM = new THREE.Color("#2a3050");
+// Pastel launched palette: soft sky, near-white, pale lemon.
+const SKY = new THREE.Color("#7fb8e6");
+const WHITE = new THREE.Color("#ffffff");
+const LEMON = new THREE.Color("#eef2a8");
+const LAUNCHED_TONES = [SKY, WHITE, LEMON];
+// Dim cards: cool light blue-grey so they stay visible on the off-white field.
+const DIM = new THREE.Color("#c5d3e2");
 
 interface CardSpec {
   position: THREE.Vector3;
@@ -36,7 +40,7 @@ function useCards(): CardSpec[] {
         floatPhase: Math.random() * Math.PI * 2,
         floatAmp: 0.15 + Math.random() * 0.35,
         launched,
-        baseColor: launched ? (Math.random() > 0.5 ? ACCENT : LIME) : DIM,
+        baseColor: launched ? LAUNCHED_TONES[i % LAUNCHED_TONES.length] : DIM,
       });
     }
     // Shuffle so the glowing cards aren't clustered at one depth.
@@ -62,11 +66,11 @@ function Card({ spec }: { spec: CardSpec }) {
       <meshStandardMaterial
         color={spec.baseColor}
         emissive={spec.baseColor}
-        emissiveIntensity={spec.launched ? 1.4 : 0.05}
-        metalness={0.3}
-        roughness={0.4}
+        emissiveIntensity={spec.launched ? 0.55 : 0}
+        metalness={0.1}
+        roughness={0.55}
         transparent
-        opacity={spec.launched ? 0.95 : 0.55}
+        opacity={spec.launched ? 0.96 : 0.72}
       />
     </mesh>
   );

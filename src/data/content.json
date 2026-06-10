@@ -1,12 +1,8 @@
 {
   "hero": {
-    "title": "당신의 아이디어 한 줄, AI가 3주 만에 실제 앱으로",
+    "title": "당신의 아이디어 한 줄, AI가 실제 앱으로",
     "subtitle": "케이티나스미디어 임직원 아이디어톤. 제출한 아이디어를 Superwork Workflow가 기획부터 출시까지 자동으로 완성합니다.",
-    "stats": [
-      { "label": "목표", "value": "50종" },
-      { "label": "출시", "value": "7종" },
-      { "label": "개발 기간", "value": "총 2~3주" }
-    ]
+    "stats": []
   },
   "ideathon": {
     "title": "아이디어톤",
@@ -16,7 +12,7 @@
       { "step": 1, "name": "공지·아이디어 제출", "duration": "1주", "desc": "사내 그룹웨어에 공지하고, 지정 양식으로 아이디어를 제출받습니다." },
       { "step": 2, "name": "탑 5 선정", "duration": "2일", "desc": "AI Agent가 아이디어를 검증·평가해 우수 아이디어 5개를 선정합니다." },
       { "step": 3, "name": "프로토타입 개발", "duration": "1주", "desc": "TAS 워크플로우로 선정 아이디어의 프로토타입을 개발합니다." },
-      { "step": 4, "name": "평가 심사", "duration": "1주", "desc": "심사위원단 평가와 전직원 설문 투표로 최종 1개를 가립니다." },
+      { "step": 4, "name": "앱 시연 평가", "duration": "1주", "desc": "완성된 앱을 시연하고, 심사위원단 평가와 전직원 설문 투표로 최종 1개를 가립니다." },
       { "step": 5, "name": "시상·기사 발행", "duration": "1일~", "desc": "수상작을 시상하고 AX 성과와 데이터 활용 계획을 사내외에 홍보합니다." },
       { "step": 6, "name": "서비스 출시", "duration": "—", "desc": "최종 우승작을 실제 웹·앱 서비스로 출시 완료합니다." }
     ],
@@ -38,7 +34,7 @@
     ],
     "judging": {
       "round1": "AI Agent 채점으로 우수 아이디어 5개 선정 (문제 정의·타겟 구체성·실현 가능성·서비스화 가능성 각 25%, 동점 시 제출 순서 우선)",
-      "round2": "심사위원단 60% + 전직원 투표 40%로 최종 1개 선정",
+      "round2": "앱 시연 평가 — 완성된 앱을 심사위원단 60% + 전직원 투표 40%로 채점해 최종 1개 선정 (아이디어 차별성·사용성·유저 확보·데이터 수집·서비스화 가능성)",
       "outcome": "최종 1개는 실제 웹·앱 서비스로 개발·출시"
     }
   },
@@ -57,6 +53,10 @@
       { "name": "검증·테스트 (역할반전)", "desc": "ThesisAgent(正)가 제안하면 AntithesisAgent(反)가 검증하고, 실제 런타임에서 동작까지 확인합니다." }
     ],
     "link": "https://superworktf.github.io/Superwork_KTNasmedia/"
+  },
+  "showcase": {
+    "title": "Superwork Workflow로 만든 앱",
+    "lead": "QR을 스캔하거나 카드를 눌러 직접 사용해 보세요."
   },
   "apps": [
     {
@@ -121,6 +121,17 @@
       "desc": "엉성하고 하찮은 느낌의 낙서풍 이미지를 만드는 앱입니다.",
       "url": "https://minion.toss.im/1PKZKt7u",
       "verified": true
+    },
+    {
+      "id": "your-idea",
+      "name": "당신의 아이디어",
+      "icon": null,
+      "tagline": "다음 라인업은 비어 있습니다",
+      "desc": "당신의 아이디어가 바로 다음 라인업이 됩니다. 한 줄을 제출하면 AI가 실제 앱으로 완성합니다.",
+      "url": null,
+      "verified": false,
+      "comingSoon": true,
+      "cta": "지금 아이디어 제출하기"
     }
   ],
   "outro": {

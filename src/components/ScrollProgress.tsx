@@ -16,7 +16,7 @@ export function ScrollProgress() {
         height: 3,
         transformOrigin: "0% 50%",
         scaleX,
-        background: "linear-gradient(90deg, var(--accent), var(--accent-lime))",
+        background: "linear-gradient(90deg, var(--accent), var(--accent-deep))",
         zIndex: 100,
       }}
     />
