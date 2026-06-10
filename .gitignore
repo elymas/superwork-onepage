@@ -1,0 +1,15 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.vite
+.gstack/
+
+# internal materials — keep out of the public repo
+_workspace/
+_workspace_prev/
+*.pptx
+.claude/
+app-icon/
+CLAUDE.md

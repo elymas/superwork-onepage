@@ -1,0 +1,92 @@
+.outro {
+  position: relative;
+  min-height: 90vh;
+  min-height: 90svh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.outro__glow {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 80vw;
+  height: 80vw;
+  max-width: 900px;
+  max-height: 900px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(77, 124, 255, 0.18) 0%, transparent 62%);
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+.outro__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.outro__title {
+  margin-top: 22px;
+  font-size: clamp(2.2rem, 6.4vw, 4.6rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  max-width: 18ch;
+  margin-inline: auto;
+}
+
+.outro__word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.outro__word {
+  display: inline-block;
+}
+
+.outro__message {
+  margin: 26px auto 0;
+  max-width: 52ch;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+.outro__cta-wrap {
+  margin-top: 40px;
+}
+
+.outro__cta {
+  font-size: 1.05rem;
+  padding: 16px 32px;
+}
+
+.outro__cta--pulse {
+  animation: outro-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes outro-pulse {
+  0%,
+  100% {
+    box-shadow: 0 10px 40px -12px var(--accent-glow);
+  }
+  50% {
+    box-shadow: 0 10px 60px -6px var(--accent-glow), 0 0 0 6px rgba(77, 124, 255, 0.12);
+  }
+}
+
+.outro__foot {
+  margin-top: 56px;
+  color: var(--text-faint);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .outro__cta--pulse {
+    animation: none;
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "hero": {
+    "title": "당신의 아이디어 한 줄, AI가 3주 만에 실제 앱으로",
+    "subtitle": "케이티나스미디어 임직원 아이디어톤. 제출한 아이디어를 Superwork Workflow가 기획부터 출시까지 자동으로 완성합니다.",
+    "stats": [
+      { "label": "목표", "value": "50종" },
+      { "label": "출시", "value": "7종" },
+      { "label": "개발 기간", "value": "총 2~3주" }
+    ]
+  },
+  "ideathon": {
+    "title": "아이디어톤",
+    "tagline": "아이디어 한 줄을 내면, AI가 실제 서비스로 출시합니다.",
+    "period": "총 2~3주",
+    "process": [
+      { "step": 1, "name": "공지·아이디어 제출", "duration": "1주", "desc": "사내 그룹웨어에 공지하고, 지정 양식으로 아이디어를 제출받습니다." },
+      { "step": 2, "name": "탑 5 선정", "duration": "2일", "desc": "AI Agent가 아이디어를 검증·평가해 우수 아이디어 5개를 선정합니다." },
+      { "step": 3, "name": "프로토타입 개발", "duration": "1주", "desc": "TAS 워크플로우로 선정 아이디어의 프로토타입을 개발합니다." },
+      { "step": 4, "name": "평가 심사", "duration": "1주", "desc": "심사위원단 평가와 전직원 설문 투표로 최종 1개를 가립니다." },
+      { "step": 5, "name": "시상·기사 발행", "duration": "1일~", "desc": "수상작을 시상하고 AX 성과와 데이터 활용 계획을 사내외에 홍보합니다." },
+      { "step": 6, "name": "서비스 출시", "duration": "—", "desc": "최종 우승작을 실제 웹·앱 서비스로 출시 완료합니다." }
+    ],
+    "howTo": {
+      "method": "그룹웨어 지정 양식 제출 (제출 기간 내 수정 가능)",
+      "items": [
+        "서비스명 (가칭)",
+        "해결하는 문제",
+        "타겟 유저 (소비자군)",
+        "핵심 기능 (최대 2가지)",
+        "기대 효과",
+        "초기 마케팅 방법"
+      ]
+    },
+    "rewards": [
+      { "target": "제출자 전원", "prize": "음료쿠폰" },
+      { "target": "탑 5", "prize": "상품권 3만원 × 5인" },
+      { "target": "최종 우승 1인", "prize": "상금 30만원 + 실제 앱 출시" }
+    ],
+    "judging": {
+      "round1": "AI Agent 채점으로 우수 아이디어 5개 선정 (문제 정의·타겟 구체성·실현 가능성·서비스화 가능성 각 25%, 동점 시 제출 순서 우선)",
+      "round2": "심사위원단 60% + 전직원 투표 40%로 최종 1개 선정",
+      "outcome": "최종 1개는 실제 웹·앱 서비스로 개발·출시"
+    }
+  },
+  "workflow": {
+    "title": "Superwork Workflow",
+    "tagline": "사람은 방향을 정하고, 시스템이 실행합니다.",
+    "concept": "정반합(正反合) 변증법 기반 멀티 에이전트 시스템",
+    "highlights": [
+      { "name": "tas init", "desc": "명령 한 번으로 안전 가드 하네스 설치, 프로젝트 설정, 환경 변수 구성이 끝납니다." },
+      { "name": "tas lifecycle", "desc": "아이디어를 입력하면 Discovery·Planning·Story Cycle이 자동으로 돌아갑니다." }
+    ],
+    "steps": [
+      { "name": "아이디어 강화", "desc": "NavigatorAgent가 아이디어를 분석하고 플랫폼·도메인·경쟁사를 조사해 구조화된 컨셉 문서로 다듬습니다." },
+      { "name": "Discovery & Planning", "desc": "프로젝트 성격에 맞춰 시장 조사·PRD·UX·아키텍처 단계를 동적으로 선택하고, 변증법 루프로 산출물 완성도를 보장합니다." },
+      { "name": "Story Cycle", "desc": "격리된 워커트리에서 Dev → Review → Playtest 루프를 ACCEPT 판정까지 자동 반복합니다. 최대 5개 스토리를 동시에 진행합니다." },
+      { "name": "검증·테스트 (역할반전)", "desc": "ThesisAgent(正)가 제안하면 AntithesisAgent(反)가 검증하고, 실제 런타임에서 동작까지 확인합니다." }
+    ],
+    "link": "https://superworktf.github.io/Superwork_KTNasmedia/"
+  },
+  "apps": [
+    {
+      "id": "animalpedia",
+      "name": "귀여운동물사전",
+      "icon": "animalpedia_logo_light_2026-05-22.png",
+      "tagline": "귀여운 동물을 모으는 도감 앱",
+      "desc": "동물을 수집하고 도감으로 채워가는 재미를 담은 앱입니다.",
+      "url": "https://minion.toss.im/5yKqzNuD",
+      "verified": true
+    },
+    {
+      "id": "bunsik-madness",
+      "name": "분식대란",
+      "icon": "bunsik-madness_logo_light_2026-05-06.png",
+      "tagline": "분식을 소재로 한 캐주얼 게임",
+      "desc": "정신없이 밀려드는 주문을 처리하는 분식 테마 게임입니다.",
+      "url": "https://minion.toss.im/rjut6Vsr",
+      "verified": true
+    },
+    {
+      "id": "dongtoesa",
+      "name": "동네퇴마사",
+      "icon": "dongtoesa_logo_light_2026-04-27.png",
+      "tagline": "동네를 무대로 한 퇴마 게임",
+      "desc": "우리 동네 곳곳의 귀신을 물리치는 캐주얼 퇴마 게임입니다.",
+      "url": "https://minion.toss.im/9pr1fMaw",
+      "verified": true
+    },
+    {
+      "id": "price-time-machine",
+      "name": "물가타임머신",
+      "icon": "app-logo-600.png",
+      "tagline": "시간에 따른 물가 변화를 보여주는 앱",
+      "desc": "시점별 물가를 비교해 보여주는 서비스입니다.",
+      "url": "https://minion.toss.im/zJkHpMOC",
+      "verified": true
+    },
+    {
+      "id": "happy-pug",
+      "name": "해피퍼그",
+      "icon": "generated_1777263532142_1.png",
+      "tagline": "퍼그와 함께하는 산책 모임 앱",
+      "desc": "반려견 산책 모임을 만들고 함께 참여하는 커뮤니티 앱입니다.",
+      "url": "https://onesto.re/0001005937",
+      "verified": true
+    },
+    {
+      "id": "moongchi",
+      "name": "뭉치뭉치",
+      "icon": "icon_openai_2026-05-13T01-14-43_5gaj.png",
+      "tagline": "병아리 캐릭터 캐주얼 게임",
+      "desc": "귀여운 병아리 캐릭터가 등장하는 캐주얼 게임입니다.",
+      "url": "https://minion.toss.im/vJzyykin",
+      "verified": true
+    },
+    {
+      "id": "hachanhan-image",
+      "name": "하찮은이미지",
+      "icon": "logo_600.png",
+      "tagline": "낙서풍 이미지를 만드는 앱",
+      "desc": "엉성하고 하찮은 느낌의 낙서풍 이미지를 만드는 앱입니다.",
+      "url": "https://minion.toss.im/1PKZKt7u",
+      "verified": true
+    }
+  ],
+  "outro": {
+    "title": "다음 앱은, 당신의 아이디어입니다",
+    "message": "이미 7종의 앱이 아이디어에서 출시까지 도달했습니다. 다음 주인공은 당신이 적어낼 한 줄입니다.",
+    "cta": "그룹웨어 지정 양식으로 지금 아이디어를 제출하세요"
+  }
+}
