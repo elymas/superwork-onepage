@@ -26,15 +26,20 @@ interface CardSpec {
 function useCards(): CardSpec[] {
   return useMemo(() => {
     const cards: CardSpec[] = [];
-    // Spread cards through a slab of space in front of the camera. Pushed a bit
-    // deeper (z) so the closer camera (Scene: z=3.6) doesn't clip the nearest cards.
+    // Keep all cards on a SHALLOW near slab (z just behind the camera plane) so they
+    // render large and uniform — deep cards were tiny/faint at the edges and left the
+    // visible cluster bunched in the centre. x is matched to the frustum half-width at
+    // this depth so the cards genuinely fill >half the width; y biased up so the field
+    // sits above the message (message at ~43vh) without covering the copy.
     for (let i = 0; i < TOTAL; i++) {
       const launched = i < LAUNCHED;
-      const radius = 1.6 + Math.random() * 4.6;
-      const angle = Math.random() * Math.PI * 2;
-      const x = Math.cos(angle) * radius * (0.7 + Math.random() * 0.6);
-      const y = (Math.random() - 0.5) * 6.4;
-      const z = -3 - Math.random() * 8;
+      const z = -1 - Math.random() * 2.5; // distance ~7–8.5 from camera (z=6)
+      // Frustum half-width grows with distance; spread x to ~95% of it at each card's
+      // depth so the field reaches the screen edges.
+      const dist = 6 - z;
+      const halfW = dist * Math.tan((60 * Math.PI) / 180 / 2) * (16 / 9);
+      const x = (Math.random() - 0.5) * 2 * halfW * 0.92;
+      const y = 4.2 + Math.random() * 4;
       cards.push({
         position: new THREE.Vector3(x, y, z),
         rotationSpeed: (Math.random() - 0.5) * 0.3,
@@ -63,7 +68,7 @@ function Card({ spec }: { spec: CardSpec }) {
 
   return (
     <mesh ref={ref} position={spec.position}>
-      <boxGeometry args={[1.6, 2.2, 0.1]} />
+      <boxGeometry args={[1.5, 2.05, 0.1]} />
       <meshStandardMaterial
         color={spec.baseColor}
         emissive={spec.baseColor}
@@ -71,7 +76,7 @@ function Card({ spec }: { spec: CardSpec }) {
         metalness={0.1}
         roughness={0.55}
         transparent
-        opacity={spec.launched ? 0.96 : 0.72}
+        opacity={spec.launched ? 0.95 : 0.7}
       />
     </mesh>
   );

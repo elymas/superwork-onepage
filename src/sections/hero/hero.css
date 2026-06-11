@@ -1,7 +1,11 @@
 .hero {
   position: relative;
-  min-height: 100vh;
-  min-height: 100svh;
+  /* Definite height (not just min-height) so the R3F canvas, which sizes to
+     height:100% of this element, fills the viewport instead of collapsing to a
+     thin strip. */
+  height: 100vh;
+  height: 100svh;
+  min-height: 600px;
   overflow: hidden;
 }
 
@@ -16,7 +20,9 @@
    between the WebGL and fallback paths). */
 .hero__content {
   position: absolute;
-  top: clamp(88px, 16vh, 190px);
+  /* Push the block down so the subtitle lands around 2/3 (≈66vh) of the viewport,
+     filling the lower area instead of clustering everything in the top third. */
+  top: clamp(290px, 43vh, 540px);
   left: 0;
   right: 0;
   z-index: 2;
