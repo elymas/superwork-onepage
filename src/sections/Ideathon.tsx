@@ -60,13 +60,25 @@ export function Ideathon() {
             transition={{ duration: 0.5 }}
           >
             <h4 className="ideathon__panel-title">참가자 혜택</h4>
-            <ul className="ideathon__rewards">
-              {ideathon.benefits.map((b) => (
-                <li key={b.target}>
-                  <span className="ideathon__reward-target">{b.target}</span>
-                  <span className="ideathon__reward-prize">{b.prize}</span>
-                </li>
-              ))}
+            <ul className="ideathon__benefits">
+              {ideathon.benefits.map((b, i) => {
+                // Last entry = grand prize → highlight card with a soft pulse.
+                const isWinner = i === ideathon.benefits.length - 1;
+                return (
+                  <motion.li
+                    key={b.target}
+                    className={isWinner ? "ideathon__benefit ideathon__benefit--winner" : "ideathon__benefit"}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.45, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <span className="ideathon__benefit-target">{b.target}</span>
+                    <strong className="ideathon__benefit-amount">{b.amount}</strong>
+                    {b.note ? <span className="ideathon__benefit-note">{b.note}</span> : null}
+                  </motion.li>
+                );
+              })}
             </ul>
           </motion.div>
 

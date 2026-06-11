@@ -1,3 +1,18 @@
+/* keep-all stops the "Workflow로" particle splitting off onto its own line on
+   narrow screens; the explicit <br> still controls the intended 2-line break. */
+.showcase .section-title {
+  word-break: keep-all;
+  text-wrap: balance;
+}
+
+/* On phones, shrink the title enough that "Superwork Workflow로" fits one line,
+   keeping the intended 2-line layout (line 1 + "만든 앱") instead of an orphan "로". */
+@media (max-width: 520px) {
+  .showcase .section-title {
+    font-size: clamp(1.5rem, 7vw, 1.9rem);
+  }
+}
+
 .showcase__grid {
   margin-top: 56px;
   display: grid;

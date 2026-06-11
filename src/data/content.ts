@@ -19,7 +19,12 @@ export interface ProcessStep {
 
 export interface Benefit {
   target: string;
-  prize: string;
+  /** Emphasized headline amount, e.g. "100만원" or "음료쿠폰". */
+  amount: string;
+  /** Supporting detail, e.g. "상금 + 실제 앱 출시". */
+  note: string;
+  /** Legacy single-string form, kept for back-compat. */
+  prize?: string;
 }
 
 export interface Criterion {

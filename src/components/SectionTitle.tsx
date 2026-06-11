@@ -1,8 +1,9 @@
 import { motion } from "motion/react";
+import type { ReactNode } from "react";
 
 interface Props {
   eyebrow: string;
-  title: string;
+  title: ReactNode;
   lead?: string;
   align?: "left" | "center";
 }

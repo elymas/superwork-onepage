@@ -133,34 +133,76 @@
   color: var(--text);
 }
 
-.ideathon__rewards {
+/* 참가자 혜택 — emphasis cards with large amount typography + winner highlight. */
+.ideathon__benefits {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 14px;
+  gap: 12px;
 }
 
-.ideathon__rewards li {
+.ideathon__benefit {
   display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--line);
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
 }
 
-.ideathon__rewards li:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.ideathon__reward-target {
+.ideathon__benefit-target {
+  font-size: 0.88rem;
+  font-weight: 600;
   color: var(--text-dim);
 }
 
-.ideathon__reward-prize {
-  font-weight: 700;
-  text-align: right;
+/* The emphasized headline amount (big number typography). */
+.ideathon__benefit-amount {
+  font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  background: linear-gradient(120deg, var(--accent-bright), var(--accent-deep));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Supporting detail under the amount. */
+.ideathon__benefit-note {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* Grand-prize highlight card. */
+.ideathon__benefit--winner {
+  background: linear-gradient(150deg, rgba(90, 155, 208, 0.16), rgba(234, 239, 158, 0.22));
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-sm);
+  animation: benefit-pulse 2.8s ease-in-out infinite;
+}
+
+.ideathon__benefit--winner .ideathon__benefit-target {
+  color: var(--accent-deep);
+}
+
+@keyframes benefit-pulse {
+  0%,
+  100% {
+    box-shadow: 0 10px 30px -18px var(--accent-glow);
+  }
+  50% {
+    box-shadow: 0 12px 40px -12px var(--accent-glow), 0 0 0 4px var(--accent-soft);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ideathon__benefit--winner {
+    animation: none;
+  }
 }
 
 .ideathon__method {
