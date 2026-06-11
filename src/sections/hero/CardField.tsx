@@ -26,14 +26,15 @@ interface CardSpec {
 function useCards(): CardSpec[] {
   return useMemo(() => {
     const cards: CardSpec[] = [];
-    // Spread cards through a slab of space in front of the camera.
+    // Spread cards through a slab of space in front of the camera. Pushed a bit
+    // deeper (z) so the closer camera (Scene: z=3.6) doesn't clip the nearest cards.
     for (let i = 0; i < TOTAL; i++) {
       const launched = i < LAUNCHED;
-      const radius = 2 + Math.random() * 6;
+      const radius = 1.6 + Math.random() * 4.6;
       const angle = Math.random() * Math.PI * 2;
       const x = Math.cos(angle) * radius * (0.7 + Math.random() * 0.6);
-      const y = (Math.random() - 0.5) * 8;
-      const z = -2 - Math.random() * 9;
+      const y = (Math.random() - 0.5) * 6.4;
+      const z = -3 - Math.random() * 8;
       cards.push({
         position: new THREE.Vector3(x, y, z),
         rotationSpeed: (Math.random() - 0.5) * 0.3,
@@ -62,7 +63,7 @@ function Card({ spec }: { spec: CardSpec }) {
 
   return (
     <mesh ref={ref} position={spec.position}>
-      <boxGeometry args={[0.9, 1.25, 0.06]} />
+      <boxGeometry args={[1.6, 2.2, 0.1]} />
       <meshStandardMaterial
         color={spec.baseColor}
         emissive={spec.baseColor}

@@ -100,11 +100,10 @@
   color: var(--text-faint);
 }
 
+/* Sits just below the message (gap ≈ headline height) instead of pinned to the
+   section bottom, so the empty space under the subtitle is no longer oversized. */
 .hero__scroll-cue {
-  position: absolute;
-  bottom: 28px;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-top: clamp(2.4rem, 7.5vw, 5.6rem);
   z-index: 2;
   color: var(--text-faint);
   font-size: 0.85rem;

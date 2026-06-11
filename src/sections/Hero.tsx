@@ -52,11 +52,11 @@ export function Hero() {
             ))}
           </div>
         ) : null}
-      </motion.div>
 
-      <div className="hero__scroll-cue" aria-hidden>
-        SCROLL ↓
-      </div>
+        <div className="hero__scroll-cue" aria-hidden>
+          SCROLL ↓
+        </div>
+      </motion.div>
     </section>
   );
 }

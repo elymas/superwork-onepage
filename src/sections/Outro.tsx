@@ -13,6 +13,17 @@ const ShaderAnimation = lazy(() =>
   import("../components/ShaderAnimation").then((m) => ({ default: m.ShaderAnimation }))
 );
 
+/** Render each sentence of the message on its own line. The curator provides the
+ *  message as an array of sentences; tolerate a legacy single string too. */
+function messageLines(message: string | string[]) {
+  const sentences = Array.isArray(message) ? message : message.split(/(?<=\.)\s+/).filter(Boolean);
+  return sentences.map((s, i) => (
+    <span key={i} className="outro__message-line">
+      {s}
+    </span>
+  ));
+}
+
 export function Outro() {
   const reduced = usePrefersReducedMotion();
   const webgl = useWebGLSupported();
@@ -65,7 +76,7 @@ export function Outro() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {outro.message}
+          {messageLines(outro.message)}
         </motion.p>
 
         <motion.div

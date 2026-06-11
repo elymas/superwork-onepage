@@ -80,6 +80,11 @@
   line-height: 1.7;
 }
 
+/* Each sentence on its own line. */
+.outro__message-line {
+  display: block;
+}
+
 .outro__cta-wrap {
   margin-top: 40px;
 }

@@ -10,7 +10,7 @@ export default function Scene() {
       className="hero__canvas"
       dpr={[1, 2]}
       gl={{ antialias: true, alpha: true }}
-      camera={{ position: [0, 0, 6], fov: 55 }}
+      camera={{ position: [0, 0, 3.6], fov: 55 }}
     >
       <ambientLight intensity={0.95} />
       <pointLight position={[6, 6, 6]} intensity={1.1} color="#bfe0f5" />

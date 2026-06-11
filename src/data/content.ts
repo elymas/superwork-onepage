@@ -84,7 +84,8 @@ export interface AppItem {
 
 export interface OutroContent {
   title: string;
-  message: string;
+  /** Array of sentences (one per line); legacy single string also accepted. */
+  message: string | string[];
   cta: string;
 }
 
