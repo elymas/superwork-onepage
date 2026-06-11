@@ -2,10 +2,6 @@
   position: relative;
   min-height: 100vh;
   min-height: 100svh;
-  display: grid;
-  /* Pull the message into the upper area so it sits over the floating cards. */
-  align-items: start;
-  justify-items: center;
   overflow: hidden;
 }
 
@@ -15,11 +11,17 @@
   z-index: 0;
 }
 
+/* Absolutely positioned in the upper area, independent of the 3D canvas / fallback
+   layout, so the message always sits above the SCROLL cue (no grid-flow surprises
+   between the WebGL and fallback paths). */
 .hero__content {
-  position: relative;
+  position: absolute;
+  top: clamp(88px, 16vh, 190px);
+  left: 0;
+  right: 0;
   z-index: 2;
   text-align: center;
-  padding: clamp(96px, 18vh, 200px) 24px 0;
+  padding: 0 24px;
   pointer-events: none;
   /* Lift the copy above the card field while keeping it readable. */
   text-shadow: 0 2px 18px rgba(250, 250, 247, 0.9), 0 1px 3px rgba(250, 250, 247, 0.8);
