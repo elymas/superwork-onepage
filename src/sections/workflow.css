@@ -2,7 +2,7 @@
   background: var(--bg-soft);
 }
 
-/* Track height = scroll distance consumed by the horizontal motion. */
+/* Track height = scroll distance consumed by the vertical motion. */
 .workflow__track {
   position: relative;
   height: 320vh;
@@ -19,13 +19,17 @@
   overflow: hidden;
 }
 
-.workflow__header-wrap {
+/* Header column (sticky-left) + scroller window (right). */
+.workflow__layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 38%) 1fr;
+  gap: clamp(24px, 5vw, 64px);
+  align-items: center;
   padding: 0 24px;
 }
 
 .workflow__header {
-  max-width: var(--maxw);
-  margin: 0 auto;
+  max-width: 38ch;
 }
 
 .workflow__link {
@@ -39,19 +43,45 @@
   text-decoration: underline;
 }
 
-.workflow__row {
+/* Fixed-height window the card column scrolls through. */
+.workflow__scroller {
+  position: relative;
+  height: min(76vh, 620px);
+  overflow: hidden;
+}
+
+.workflow__column {
   display: flex;
-  gap: 24px;
-  padding: 48px 24px;
-  align-items: stretch;
+  flex-direction: column;
+  gap: 20px;
   will-change: transform;
+}
+
+/* Top/bottom gradient masks fade cards at the window boundaries. */
+.workflow__mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 18%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.workflow__mask--top {
+  top: 0;
+  background: linear-gradient(to bottom, var(--bg-soft) 0%, rgba(233, 241, 248, 0) 100%);
+}
+
+.workflow__mask--bottom {
+  bottom: 0;
+  background: linear-gradient(to top, var(--bg-soft) 0%, rgba(233, 241, 248, 0) 100%);
 }
 
 .workflow__intro-card,
 .workflow__panel {
-  flex: 0 0 clamp(280px, 42vw, 460px);
+  flex: 0 0 auto;
   border-radius: var(--radius-lg);
-  padding: 36px;
+  padding: 32px;
   background: var(--surface);
   border: 1px solid var(--line);
   box-shadow: var(--shadow-sm);
@@ -138,6 +168,19 @@
 .workflow--static .workflow__highlights {
   margin-top: 24px;
   grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 860px) {
+  .workflow__layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .workflow__header {
+    max-width: none;
+  }
+  .workflow__scroller {
+    height: min(60vh, 460px);
+  }
 }
 
 @media (max-width: 760px) {

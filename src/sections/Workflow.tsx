@@ -10,14 +10,15 @@ export function Workflow() {
   const reduced = usePrefersReducedMotion();
   const trackRef = useRef<HTMLDivElement>(null);
 
-  // Sticky horizontal scroll-hijack: the panel row translates left as the tall
-  // outer track scrolls past. Disabled (vertical stack) for reduced motion.
+  // Sticky vertical scroller: the card column translates UP through a fixed-height
+  // window as the tall outer track scrolls past. Top/bottom gradient masks fade the
+  // cards at the window boundaries (Vercel-style Scroller). Reduced motion → static stack.
   const { scrollYProgress } = useScroll({
     target: trackRef,
     offset: ["start start", "end end"],
   });
-  // 4 panels + intro card => move across ~78% of the row width.
-  const x = useTransform(scrollYProgress, [0, 1], ["2%", "-78%"]);
+  // Intro card + 4 panels. Move the column up across most of its height.
+  const y = useTransform(scrollYProgress, [0, 1], ["4%", "-80%"]);
 
   if (reduced) {
     return (
@@ -37,21 +38,30 @@ export function Workflow() {
 
   return (
     <section id="workflow" className="workflow">
-      {/* Tall track creates the scroll distance the horizontal motion consumes. */}
+      {/* Tall track creates the scroll distance the vertical motion consumes. */}
       <div className="workflow__track" ref={trackRef}>
         <div className="workflow__sticky">
-          <div className="container workflow__header-wrap">
-            <WorkflowHeader />
-          </div>
-          <motion.div className="workflow__row" style={{ x }}>
-            <div className="workflow__intro-card">
-              <span className="workflow__concept">{workflow.concept}</span>
-              <WorkflowHighlights inline />
+          <div className="container workflow__layout">
+            <div className="workflow__header-col">
+              <WorkflowHeader />
             </div>
-            {workflow.steps.map((s, i) => (
-              <WorkflowPanel key={s.name} index={i} name={s.name} desc={s.desc} />
-            ))}
-          </motion.div>
+
+            <div className="workflow__scroller">
+              <motion.div className="workflow__column" style={{ y }}>
+                <div className="workflow__intro-card">
+                  <span className="workflow__concept">{workflow.concept}</span>
+                  <WorkflowHighlights inline />
+                </div>
+                {workflow.steps.map((s, i) => (
+                  <WorkflowPanel key={s.name} index={i} name={s.name} desc={s.desc} />
+                ))}
+              </motion.div>
+
+              {/* Gradient masks fade cards into the top/bottom window edges. */}
+              <div className="workflow__mask workflow__mask--top" aria-hidden />
+              <div className="workflow__mask workflow__mask--bottom" aria-hidden />
+            </div>
+          </div>
         </div>
       </div>
     </section>

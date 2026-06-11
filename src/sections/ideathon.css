@@ -18,6 +18,14 @@
   box-shadow: 0 0 0 4px var(--accent-soft);
 }
 
+.ideathon__period-range {
+  margin-left: 4px;
+  padding-left: 12px;
+  border-left: 1px solid var(--line-strong);
+  color: var(--accent-bright);
+  font-weight: 600;
+}
+
 .ideathon__timeline {
   position: relative;
   margin-top: 48px;
@@ -160,30 +168,58 @@
   margin-bottom: 16px;
 }
 
-.ideathon__chips {
-  display: flex;
-  flex-wrap: wrap;
+/* 작성 항목 — readable numbered rows (replaced oval chips). */
+.ideathon__fields {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
   gap: 10px;
 }
 
-.ideathon__chip {
-  padding: 8px 14px;
-  border-radius: 999px;
+.ideathon__field {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: var(--radius);
   background: var(--surface-2);
   border: 1px solid var(--line);
-  font-size: 0.9rem;
-  color: var(--text-dim);
 }
 
-.ideathon__judging {
-  margin-top: 20px;
+.ideathon__field-no {
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent-bright);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.ideathon__field-label {
+  font-size: 0.96rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Selection rounds (1차/2차). */
+.ideathon__selection {
+  margin-top: 20px;
   padding: 28px;
   border-radius: var(--radius-lg);
   background: linear-gradient(135deg, rgba(90, 155, 208, 0.1), rgba(234, 239, 158, 0.18));
   border: 1px solid var(--line);
+}
+
+.ideathon__selection-rounds {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 .ideathon__judging-label {
@@ -193,15 +229,71 @@
   margin-bottom: 8px;
 }
 
-.ideathon__judging p {
+.ideathon__selection-rounds p {
   color: var(--text-dim);
   line-height: 1.6;
   font-size: 0.95rem;
 }
 
+/* Idea screening criteria — 4 weighted cards. */
+.ideathon__criteria {
+  margin-top: 20px;
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+}
+
+.ideathon__criteria-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.ideathon__criterion {
+  padding: 18px;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+
+.ideathon__criterion-weight {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--accent-bright);
+  letter-spacing: -0.01em;
+}
+
+.ideathon__criterion-name {
+  margin: 8px 0 6px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.ideathon__criterion-desc {
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 860px) {
+  .ideathon__criteria-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 760px) {
   .ideathon__grid,
-  .ideathon__judging {
+  .ideathon__selection-rounds {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .ideathon__criteria-grid {
     grid-template-columns: 1fr;
   }
 }

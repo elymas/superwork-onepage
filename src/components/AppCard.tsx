@@ -1,9 +1,10 @@
 import { useRef, useState } from "react";
 import { motion, useMotionTemplate, useMotionValue, useSpring } from "motion/react";
 import { QRCodeSVG } from "qrcode.react";
-import { type AppItem, iconUrl } from "../data/content";
+import { type AppItem, iconUrl, groupwareHref } from "../data/content";
 
 const MAX_TILT = 9; // degrees
+const HOVER_SCALE = 1.04;
 
 interface Props {
   app: AppItem;
@@ -14,10 +15,11 @@ export function AppCard({ app, reduced }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
 
-  // Pointer-driven 3D tilt. Springs smooth the snap-back on leave.
+  // Pointer-driven 3D tilt + lift on hover. Springs smooth the snap-back on leave.
   const rotX = useSpring(useMotionValue(0), { stiffness: 220, damping: 18 });
   const rotY = useSpring(useMotionValue(0), { stiffness: 220, damping: 18 });
-  const transform = useMotionTemplate`perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+  const scale = useSpring(useMotionValue(1), { stiffness: 260, damping: 22 });
+  const transform = useMotionTemplate`perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${scale})`;
 
   function onMove(e: React.PointerEvent) {
     if (reduced || !ref.current) return;
@@ -28,9 +30,15 @@ export function AppCard({ app, reduced }: Props) {
     rotX.set(-py * MAX_TILT * 2);
   }
 
+  function onEnter() {
+    setHovered(true);
+    if (!reduced) scale.set(HOVER_SCALE);
+  }
+
   function onLeave() {
     rotX.set(0);
     rotY.set(0);
+    scale.set(1);
     setHovered(false);
   }
 
@@ -40,7 +48,7 @@ export function AppCard({ app, reduced }: Props) {
       className="app-card"
       style={reduced ? undefined : { transform }}
       onPointerMove={onMove}
-      onPointerEnter={() => setHovered(true)}
+      onPointerEnter={onEnter}
       onPointerLeave={onLeave}
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -79,11 +87,14 @@ export function AppCard({ app, reduced }: Props) {
 }
 
 /** The 8th "next lineup" slot — invites an idea submission instead of showing a QR.
- *  No URL (submission is via the internal groupware form), so the CTA is a static
- *  badge rather than a link, matching the outro CTA convention. Dispatched from
- *  Showcase (not via an early return in AppCard) to keep both components' hooks
- *  unconditional. */
+ *  The CTA links to the groupware board when a verified URL exists; until then it
+ *  stays a hover-only badge (no broken placeholder link on a printed/scanned page).
+ *  Dispatched from Showcase (not via an early return in AppCard) to keep both
+ *  components' hooks unconditional. */
 export function ComingSoonCard({ app, reduced }: Props) {
+  const href = groupwareHref();
+  const label = app.cta ?? "지금 아이디어 제출하기";
+
   return (
     <motion.div
       className="app-card app-card--soon"
@@ -105,7 +116,27 @@ export function ComingSoonCard({ app, reduced }: Props) {
       {app.desc ? <p className="app-card__desc">{app.desc}</p> : null}
 
       <div className="app-card__footer">
-        <div className="app-card__soon-cta">{app.cta ?? "지금 아이디어 제출하기"}</div>
+        {href ? (
+          <motion.a
+            className="app-card__soon-cta"
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            whileHover={reduced ? undefined : { scale: 1.05 }}
+            whileTap={reduced ? undefined : { scale: 0.97 }}
+          >
+            {label}
+          </motion.a>
+        ) : (
+          <motion.span
+            className="app-card__soon-cta"
+            role="button"
+            aria-disabled="true"
+            whileHover={reduced ? undefined : { scale: 1.05 }}
+          >
+            {label}
+          </motion.span>
+        )}
       </div>
     </motion.div>
   );

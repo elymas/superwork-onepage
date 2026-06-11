@@ -1,21 +1,39 @@
+import { lazy, Suspense } from "react";
 import { motion } from "motion/react";
-import { content } from "../data/content";
+import { content, groupwareHref } from "../data/content";
 import { usePrefersReducedMotion } from "../hooks/useReducedMotion";
+import { useWebGLSupported } from "../hooks/useWebGL";
 import "./outro.css";
 
 const { outro } = content;
 
+// three.js only loads for devices that actually render the shader backdrop,
+// keeping it out of the initial bundle (same lazy strategy as the Hero scene).
+const ShaderAnimation = lazy(() =>
+  import("../components/ShaderAnimation").then((m) => ({ default: m.ShaderAnimation }))
+);
+
 export function Outro() {
   const reduced = usePrefersReducedMotion();
+  const webgl = useWebGLSupported();
+  // Shader only adds value when it can animate; skip the three.js download entirely
+  // on reduced-motion or no-WebGL devices.
+  const useShader = webgl && !reduced;
   // Split the title into words for a staggered mask-reveal.
   const words = outro.title.split(" ");
+  const href = groupwareHref();
 
   return (
     <section id="outro" className="section outro">
+      {useShader ? (
+        <Suspense fallback={null}>
+          <ShaderAnimation paused={false} />
+        </Suspense>
+      ) : null}
       <div className="outro__glow" aria-hidden />
       <div className="container outro__inner">
         <motion.span
-          className="eyebrow"
+          className="eyebrow outro__eyebrow"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -57,7 +75,28 @@ export function Outro() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, delay: 0.32 }}
         >
-          <span className={reduced ? "btn outro__cta" : "btn outro__cta outro__cta--pulse"}>{outro.cta}</span>
+          {href ? (
+            <motion.a
+              className={reduced ? "btn outro__cta" : "btn outro__cta outro__cta--pulse"}
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              whileHover={reduced ? undefined : { scale: 1.04 }}
+              whileTap={reduced ? undefined : { scale: 0.98 }}
+            >
+              {outro.cta}
+            </motion.a>
+          ) : (
+            // No verified URL yet — keep hover affordance but don't link to a placeholder.
+            <motion.span
+              className={reduced ? "btn outro__cta" : "btn outro__cta outro__cta--pulse"}
+              role="button"
+              aria-disabled="true"
+              whileHover={reduced ? undefined : { scale: 1.04 }}
+            >
+              {outro.cta}
+            </motion.span>
+          )}
         </motion.div>
 
         <p className="outro__foot">superwork · KT나스미디어 사내 아이디어톤</p>

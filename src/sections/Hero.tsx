@@ -26,10 +26,6 @@ export function Hero() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
   const y = useTransform(scrollYProgress, [0, 1], [0, 80]);
 
-  function scrollToWorkflow() {
-    document.getElementById("workflow")?.scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
-  }
-
   return (
     <section id="hero" className="hero" ref={sectionRef}>
       {use3D ? (
@@ -56,12 +52,6 @@ export function Hero() {
             ))}
           </div>
         ) : null}
-
-        <div style={{ marginTop: 40 }}>
-          <button className="btn" onClick={scrollToWorkflow}>
-            워크플로우 살펴보기
-          </button>
-        </div>
       </motion.div>
 
       <div className="hero__scroll-cue" aria-hidden>

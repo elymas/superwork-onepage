@@ -23,6 +23,7 @@ export function Ideathon() {
         <div className="ideathon__period">
           <span className="ideathon__period-dot" />
           진행 기간 {ideathon.period}
+          <span className="ideathon__period-range">{ideathon.periodRange}</span>
         </div>
 
         <div className="ideathon__timeline" ref={timelineRef}>
@@ -42,10 +43,7 @@ export function Ideathon() {
               >
                 <span className="ideathon__step-no">{step.step}</span>
                 <div className="ideathon__step-body">
-                  <div className="ideathon__step-head">
-                    <h3 className="ideathon__step-title">{step.name}</h3>
-                    <span className="ideathon__step-duration">{step.duration}</span>
-                  </div>
+                  <h3 className="ideathon__step-title">{step.name}</h3>
                   <p className="ideathon__step-desc">{step.desc}</p>
                 </div>
               </motion.li>
@@ -61,12 +59,12 @@ export function Ideathon() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5 }}
           >
-            <h4 className="ideathon__panel-title">보상</h4>
+            <h4 className="ideathon__panel-title">참가자 혜택</h4>
             <ul className="ideathon__rewards">
-              {ideathon.rewards.map((r) => (
-                <li key={r.target}>
-                  <span className="ideathon__reward-target">{r.target}</span>
-                  <span className="ideathon__reward-prize">{r.prize}</span>
+              {ideathon.benefits.map((b) => (
+                <li key={b.target}>
+                  <span className="ideathon__reward-target">{b.target}</span>
+                  <span className="ideathon__reward-prize">{b.prize}</span>
                 </li>
               ))}
             </ul>
@@ -79,36 +77,62 @@ export function Ideathon() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5, delay: 0.08 }}
           >
-            <h4 className="ideathon__panel-title">제출 항목</h4>
+            <h4 className="ideathon__panel-title">{ideathon.howTo.title}</h4>
             <div className="ideathon__method">{ideathon.howTo.method}</div>
-            <div className="ideathon__chips">
-              {ideathon.howTo.items.map((item) => (
-                <span key={item} className="ideathon__chip">
-                  {item}
-                </span>
+            <ul className="ideathon__fields">
+              {ideathon.howTo.items.map((item, i) => (
+                <motion.li
+                  key={item}
+                  className="ideathon__field"
+                  initial={{ opacity: 0, x: -16 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.4, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <span className="ideathon__field-no">{i + 1}</span>
+                  <span className="ideathon__field-label">{item}</span>
+                </motion.li>
               ))}
-            </div>
+            </ul>
           </motion.div>
         </div>
 
         <motion.div
-          className="ideathon__judging"
+          className="ideathon__selection"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5 }}
         >
-          <div>
-            <span className="ideathon__judging-label">1차 · 아이디어</span>
-            <p>{ideathon.judging.round1}</p>
+          <h4 className="ideathon__panel-title">{ideathon.selection.title}</h4>
+          <div className="ideathon__selection-rounds">
+            <div>
+              <span className="ideathon__judging-label">1차 · 아이디어</span>
+              <p>{ideathon.selection.round1}</p>
+            </div>
+            <div>
+              <span className="ideathon__judging-label">2차 · 앱 개발 대상</span>
+              <p>{ideathon.selection.round2}</p>
+            </div>
           </div>
-          <div>
-            <span className="ideathon__judging-label">2차 · 앱 시연</span>
-            <p>{ideathon.judging.round2}</p>
-          </div>
-          <div>
-            <span className="ideathon__judging-label">결과</span>
-            <p>{ideathon.judging.outcome}</p>
+        </motion.div>
+
+        <motion.div
+          className="ideathon__criteria"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5 }}
+        >
+          <h4 className="ideathon__panel-title">{ideathon.criteria.title}</h4>
+          <div className="ideathon__criteria-grid">
+            {ideathon.criteria.items.map((c) => (
+              <div key={c.name} className="ideathon__criterion">
+                <span className="ideathon__criterion-weight">{c.weight}</span>
+                <h5 className="ideathon__criterion-name">{c.name}</h5>
+                <p className="ideathon__criterion-desc">{c.desc}</p>
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>
