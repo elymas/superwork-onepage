@@ -110,26 +110,6 @@ export function Ideathon() {
         </div>
 
         <motion.div
-          className="ideathon__selection"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5 }}
-        >
-          <h4 className="ideathon__panel-title">{ideathon.selection.title}</h4>
-          <div className="ideathon__selection-rounds">
-            <div>
-              <span className="ideathon__judging-label">1차 · 아이디어</span>
-              <p>{ideathon.selection.round1}</p>
-            </div>
-            <div>
-              <span className="ideathon__judging-label">2차 · 앱 개발 대상</span>
-              <p>{ideathon.selection.round2}</p>
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div
           className="ideathon__criteria"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

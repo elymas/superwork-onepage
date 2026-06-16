@@ -98,6 +98,8 @@ export interface MissionItem {
   rank: string;
   goal: string;
   verify: string;
+  /** Optional extra conditions/notes shown below the verify box. */
+  note?: string;
   /** Certification example screenshots in public/missions. */
   certImages: string[];
   /** Marks the wide aggregate (앱인토스 전체 앱) mission card. */

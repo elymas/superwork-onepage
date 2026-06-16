@@ -9,6 +9,7 @@ import {
 } from "motion/react";
 import { content, missionAsset, kakaoOpenChatHref } from "../data/content";
 import { usePrefersReducedMotion } from "../hooks/useReducedMotion";
+import { SparklesCore } from "../components/SparklesCore";
 import "./oneMoreThing.css";
 
 const { oneMoreThing } = content;
@@ -211,6 +212,8 @@ function MissionCard({
           <span className="omt-mission__verify-label">인증 방법</span>
           <p className="omt-mission__verify-text">{mission.verify}</p>
         </div>
+
+        {mission.note ? <p className="omt-mission__note">{mission.note}</p> : null}
       </div>
 
       {mission.certImages.length > 0 ? (
@@ -268,9 +271,22 @@ export function OneMoreThing() {
   return (
     <section id="one-more-thing" className="section one-more-thing">
       <div className="container">
-        <motion.p className="omt-keymsg" {...REVEAL}>
-          {oneMoreThing.eyebrow}
-        </motion.p>
+        <div className="omt-keymsg-wrap">
+          {!reduced ? (
+            <SparklesCore
+              className="omt-sparkles"
+              background="transparent"
+              minSize={0.6}
+              maxSize={1.4}
+              speed={1.2}
+              particleDensity={150}
+              particleColor="#5a9bd0"
+            />
+          ) : null}
+          <motion.p className="omt-keymsg" {...REVEAL}>
+            {oneMoreThing.eyebrow}
+          </motion.p>
+        </div>
 
         <Carousel reduced={reduced} />
 

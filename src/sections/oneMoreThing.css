@@ -115,15 +115,42 @@
 }
 
 /* The key message — hoisted to the very top of the section and sized to match
-   the previous section's "함께 만드는 AX 문화" display heading. */
+   the previous section's "함께 만드는 AX 문화" display heading. A sparkle field
+   sits behind the text. */
+.omt-keymsg-wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: clamp(40px, 6vh, 72px);
+}
+
+.omt-sparkles {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(700px, 96%);
+  height: 200px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.omt-sparkles canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
 .omt-keymsg {
+  position: relative;
+  z-index: 1;
   font-size: clamp(2.6rem, 7vw, 4.6rem);
   font-weight: 800;
   letter-spacing: 0.01em;
   line-height: 1.1;
   text-align: center;
   color: var(--accent-bright);
-  margin-bottom: clamp(40px, 6vh, 72px);
   text-wrap: balance;
 }
 
@@ -142,6 +169,7 @@
   font-size: clamp(1rem, 1.7vw, 1.18rem);
   line-height: 1.65;
   color: var(--text-dim);
+  white-space: pre-line;
 }
 
 .omt-cta {
@@ -308,6 +336,7 @@
   font-size: 0.98rem;
   line-height: 1.55;
   color: var(--text);
+  white-space: pre-line;
 }
 
 .omt-mission__verify {
@@ -331,6 +360,14 @@
   font-size: 0.9rem;
   line-height: 1.55;
   color: var(--text-dim);
+}
+
+.omt-mission__note {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-faint);
+  padding-left: 12px;
+  border-left: 2px solid var(--line-strong);
 }
 
 .omt-mission__certs {
