@@ -153,6 +153,79 @@
       "cta": "지금 아이디어 제출하기"
     }
   ],
+  "oneMoreThing": {
+    "eyebrow": "One more thing.",
+    "title": "미션 챌린지",
+    "lead": "출시된 앱을 직접 플레이하고 인증하면, 미션마다 10만원. 모든 미션은 중복 참여할 수 있습니다.",
+    "rewardNote": "미션당 10만원 · 5개 미션 모두 도전 가능",
+    "applyNote": "미션 인증은 카카오톡 오픈채팅방에서 기명으로 신청받습니다.",
+    "ctaText": "카카오톡 오픈채팅방 신청",
+    "kakaoOpenChatUrl": "KAKAO_OPENCHAT_URL_HERE",
+    "kakaoOpenChatVerified": false,
+    "carousel": [
+      { "id": "animalpedia", "thumb": "thumb-animalpedia.jpg", "name": "귀여운동물사전" },
+      { "id": "bunsik-madness", "thumb": "thumb-bunsik-madness.jpg", "name": "분식대란" },
+      { "id": "dongtoesa", "thumb": "thumb-dongtoesa.jpg", "name": "동네퇴마사" },
+      { "id": "moongchi", "thumb": "thumb-moongchi.jpg", "name": "뭉치뭉치" },
+      { "id": "happy-pug", "thumb": "thumb-happy-pug.jpg", "name": "해피퍼그" },
+      { "id": "price-time-machine", "thumb": "thumb-price-time-machine.jpg", "name": "물가타임머신" },
+      { "id": "hachanhan-image", "thumb": "thumb-hachanhan-image.jpg", "name": "하찮은이미지" },
+      { "id": "dream-gallery", "thumb": "thumb-dream-gallery.jpg", "name": "드림갤러리" }
+    ],
+    "missions": [
+      {
+        "id": "moongchi",
+        "name": "뭉치뭉치",
+        "thumb": "thumb-moongchi.jpg",
+        "prize": "10만원",
+        "rank": "1등",
+        "goal": "레인보우(무지개) 고양이 획득 최초 인증",
+        "verify": "도감보기 > 무지개 고양이가 보이게 화면 캡처 후 전달",
+        "certImages": ["cert-moongchi-1.jpg", "cert-moongchi-2.jpg"]
+      },
+      {
+        "id": "animalpedia",
+        "name": "귀여운동물사전",
+        "thumb": "thumb-animalpedia.jpg",
+        "prize": "10만원",
+        "rank": "1등",
+        "goal": "귀여운 동물사전 등재가 가장 빠른 사람 (없으면 기간 내 '귀여워요' 투표가 가장 높은 사람)",
+        "verify": "홈화면 > 동물 클릭 > '귀여워요 00표' 캡처",
+        "certImages": ["cert-animalpedia-1.jpg"]
+      },
+      {
+        "id": "dongtoesa",
+        "name": "동네퇴마사",
+        "thumb": "thumb-dongtoesa.jpg",
+        "prize": "10만원",
+        "rank": "1등",
+        "goal": "최고 레벨 도달 (동일 레벨이면 적 처치 수가 많은 사람)",
+        "verify": "게임 종료 후 임무 완수 레벨 및 처치한 적 수 캡처",
+        "certImages": ["cert-dongtoesa-1.jpg"]
+      },
+      {
+        "id": "bunsik-madness",
+        "name": "분식대란",
+        "thumb": "thumb-bunsik-madness.jpg",
+        "prize": "10만원",
+        "rank": "1등",
+        "goal": "가장 높은 레벨 도달 → 동일 시 매출이 높은 사람",
+        "verify": "홈화면 > 영업일지 캡처 AND 홈화면 매출액 캡처",
+        "certImages": ["cert-bunsik-madness-1.jpg", "cert-bunsik-madness-2.jpg"]
+      },
+      {
+        "id": "appintoss-all",
+        "name": "앱인토스 전체 앱 체험",
+        "thumb": null,
+        "prize": "10만원",
+        "rank": "선착순 1명",
+        "goal": "앱인토스에 '케이티나스미디어'로 출시된 앱(게임 + 미니앱) 8종을 모두 체험하고 가장 먼저 인증",
+        "verify": "토스 화면 > 전체 > 최근 서비스 캡처",
+        "certImages": ["cert-appintoss-all.jpg"],
+        "featured": true
+      }
+    ]
+  },
   "outro": {
     "title": "다음 앱은, 당신의 아이디어입니다",
     "message": [

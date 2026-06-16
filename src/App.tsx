@@ -3,6 +3,7 @@ import { Hero } from "./sections/Hero";
 import { Ideathon } from "./sections/Ideathon";
 import { Workflow } from "./sections/Workflow";
 import { Showcase } from "./sections/Showcase";
+import { OneMoreThing } from "./sections/OneMoreThing";
 import { Outro } from "./sections/Outro";
 
 export function App() {
@@ -15,6 +16,7 @@ export function App() {
         <Workflow />
         <Showcase />
         <Outro />
+        <OneMoreThing />
       </main>
     </>
   );

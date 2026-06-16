@@ -82,6 +82,41 @@ export interface AppItem {
   cta?: string;
 }
 
+export interface CarouselItem {
+  id: string;
+  thumb: string;
+  name: string;
+}
+
+export interface MissionItem {
+  id: string;
+  name: string;
+  /** App thumbnail filename in public/missions, or null for the aggregate Toss mission. */
+  thumb: string | null;
+  prize: string;
+  /** "1등" or "선착순 1명". */
+  rank: string;
+  goal: string;
+  verify: string;
+  /** Certification example screenshots in public/missions. */
+  certImages: string[];
+  /** Marks the wide aggregate (앱인토스 전체 앱) mission card. */
+  featured?: boolean;
+}
+
+export interface OneMoreThingContent {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  rewardNote: string;
+  applyNote: string;
+  ctaText: string;
+  kakaoOpenChatUrl?: string;
+  kakaoOpenChatVerified?: boolean;
+  carousel: CarouselItem[];
+  missions: MissionItem[];
+}
+
 export interface OutroContent {
   title: string;
   /** Array of sentences (one per line); legacy single string also accepted. */
@@ -95,6 +130,7 @@ export interface SiteContent {
   workflow: WorkflowContent;
   showcase: ShowcaseContent;
   apps: AppItem[];
+  oneMoreThing: OneMoreThingContent;
   outro: OutroContent;
   /** Curator is moving the groupware fields here from ideathon.*; groupwareHref()
    *  reads top-level first, then falls back to ideathon. Both optional in transit. */
@@ -107,6 +143,25 @@ export const content = raw as unknown as SiteContent;
 /** public/ asset URL resolved against the GH Pages base path. */
 export function iconUrl(file: string): string {
   return `${import.meta.env.BASE_URL}icons/${file}`;
+}
+
+/** public/missions asset URL (carousel thumbs, mission cert shots), base-path safe. */
+export function missionAsset(file: string): string {
+  return `${import.meta.env.BASE_URL}missions/${file}`;
+}
+
+/** The Kakao open-chat application link, only when it's a real verified URL.
+ *  Returns null while it's still the placeholder so the CTA renders a hover
+ *  affordance without a broken href (print/presentation safety) — same contract
+ *  as groupwareHref().
+ *
+ *  TO GO LIVE: in src/data/content.json set oneMoreThing.kakaoOpenChatUrl to the
+ *  real open-chat URL and flip kakaoOpenChatVerified to true. */
+export function kakaoOpenChatHref(): string | null {
+  const url = content.oneMoreThing.kakaoOpenChatUrl;
+  const verified = content.oneMoreThing.kakaoOpenChatVerified;
+  if (verified && url && /^https?:\/\//.test(url) && !url.includes("_HERE")) return url;
+  return null;
 }
 
 /** The groupware submission link, only when it's a real verified URL. Returns null
