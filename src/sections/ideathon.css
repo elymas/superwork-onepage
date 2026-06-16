@@ -216,14 +216,14 @@
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 10px;
+  gap: 11px;
 }
 
 .ideathon__field {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 12px 16px;
+  gap: 15px;
+  padding: 13px 18px;
   border-radius: var(--radius);
   background: var(--surface-2);
   border: 1px solid var(--line);
@@ -231,19 +231,19 @@
 
 .ideathon__field-no {
   flex: 0 0 auto;
-  width: 26px;
-  height: 26px;
+  width: 29px;
+  height: 29px;
   display: grid;
   place-items: center;
   border-radius: 50%;
   background: var(--accent-soft);
   color: var(--accent-bright);
-  font-size: 0.85rem;
+  font-size: 0.94rem;
   font-weight: 800;
 }
 
 .ideathon__field-label {
-  font-size: 0.96rem;
+  font-size: 1.06rem;
   color: var(--text);
   font-weight: 600;
 }
