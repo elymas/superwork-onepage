@@ -268,10 +268,13 @@ export function OneMoreThing() {
   return (
     <section id="one-more-thing" className="section one-more-thing">
       <div className="container">
+        <motion.p className="omt-keymsg" {...REVEAL}>
+          {oneMoreThing.eyebrow}
+        </motion.p>
+
         <Carousel reduced={reduced} />
 
         <motion.div className="omt-intro" {...REVEAL}>
-          <span className="omt-eyebrow">{oneMoreThing.eyebrow}</span>
           <h2 className="omt-title">{oneMoreThing.title}</h2>
           <p className="omt-lead">{oneMoreThing.lead}</p>
 

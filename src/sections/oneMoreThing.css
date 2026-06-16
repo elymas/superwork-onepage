@@ -3,9 +3,9 @@
 .one-more-thing {
   /* Carousel geometry — overridden by the media queries below.
      Cards are landscape (~7:3) to match the store thumbnails. */
-  --omt-radius: 340px;
-  --omt-card-w: 232px;
-  --omt-card-h: 100px;
+  --omt-radius: 420px;
+  --omt-card-w: 464px;
+  --omt-card-h: 200px;
 
   /* No overflow clip on the section itself: it would trap the top-layer <dialog>
      backdrop. The wide ring is clipped at the carousel instead. */
@@ -114,11 +114,17 @@
   align-items: center;
 }
 
-.omt-eyebrow {
-  font-size: clamp(0.85rem, 1.6vw, 1.05rem);
-  font-weight: 700;
-  letter-spacing: 0.18em;
+/* The key message — hoisted to the very top of the section and sized to match
+   the previous section's "함께 만드는 AX 문화" display heading. */
+.omt-keymsg {
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  text-align: center;
   color: var(--accent-bright);
+  margin-bottom: clamp(40px, 6vh, 72px);
+  text-wrap: balance;
 }
 
 .omt-title {
@@ -199,9 +205,8 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  /* Contain the card tilt/lift so it can't add a horizontal scrollbar (the
-     section can't clip — that would trap the lightbox backdrop). */
-  overflow: hidden;
+  /* No overflow clip here: the hover tilt/scale would get its left/right edges
+     cut off. The page can't scroll sideways anyway (body { overflow-x: hidden }). */
 }
 
 .omt-mission {
@@ -472,9 +477,9 @@
 /* ---------- Responsive ---------- */
 @media (max-width: 1023px) {
   .one-more-thing {
-    --omt-radius: 260px;
-    --omt-card-w: 188px;
-    --omt-card-h: 80px;
+    --omt-radius: 320px;
+    --omt-card-w: 376px;
+    --omt-card-h: 162px;
   }
 
   .omt-missions {
@@ -493,9 +498,9 @@
 
 @media (max-width: 520px) {
   .one-more-thing {
-    --omt-radius: 150px;
-    --omt-card-w: 150px;
-    --omt-card-h: 64px;
+    --omt-radius: 190px;
+    --omt-card-w: 300px;
+    --omt-card-h: 128px;
   }
 
   .omt-carousel {
