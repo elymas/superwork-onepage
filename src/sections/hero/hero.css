@@ -74,6 +74,10 @@
   text-wrap: balance;
 }
 
+.hero__title-accent {
+  color: #3b82f6;
+}
+
 .hero__subtitle {
   margin: 24px auto 0;
   max-width: 52ch;

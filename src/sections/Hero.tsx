@@ -39,7 +39,9 @@ export function Hero() {
 
       <motion.div className="hero__content" style={reduced ? undefined : { opacity, scale, y }}>
         <span className="hero__eyebrow">KT나스미디어 사내 아이디어톤</span>
-        <h1 className="hero__title">{hero.title}</h1>
+        <h1 className="hero__title">
+          Idea is <span className="hero__title-accent">All you need</span>
+        </h1>
         <p className="hero__subtitle">{hero.subtitle}</p>
 
         {hero.stats.length > 0 ? (
