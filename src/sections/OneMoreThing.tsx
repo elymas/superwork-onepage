@@ -7,7 +7,7 @@ import {
   useMotionValue,
   useSpring,
 } from "motion/react";
-import { content, missionAsset, kakaoOpenChatHref } from "../data/content";
+import { content, missionAsset } from "../data/content";
 import { usePrefersReducedMotion } from "../hooks/useReducedMotion";
 import { SparklesCore } from "../components/SparklesCore";
 import "./oneMoreThing.css";
@@ -250,7 +250,6 @@ function MissionCard({
 
 export function OneMoreThing() {
   const reduced = usePrefersReducedMotion();
-  const kakaoHref = kakaoOpenChatHref();
 
   // One shared lightbox for every cert screenshot. A plain fixed overlay (not a
   // native <dialog>) — the page's `body { overflow-x: hidden }` made the dialog
@@ -294,27 +293,15 @@ export function OneMoreThing() {
           <h2 className="omt-title">{oneMoreThing.title}</h2>
           <p className="omt-lead">{oneMoreThing.lead}</p>
 
-          {kakaoHref ? (
-            <motion.a
-              className="omt-cta"
-              href={kakaoHref}
-              target="_blank"
-              rel="noreferrer"
-              whileHover={reduced ? undefined : { scale: 1.05 }}
-              whileTap={reduced ? undefined : { scale: 0.97 }}
-            >
-              {oneMoreThing.ctaText}
-            </motion.a>
-          ) : (
-            <motion.span
-              className="omt-cta"
-              role="button"
-              aria-disabled="true"
-              whileHover={reduced ? undefined : { scale: 1.05 }}
-            >
-              {oneMoreThing.ctaText}
-            </motion.span>
-          )}
+          <motion.button
+            type="button"
+            className="omt-cta"
+            onClick={() => window.alert("준비중입니다~")}
+            whileHover={reduced ? undefined : { scale: 1.05 }}
+            whileTap={reduced ? undefined : { scale: 0.97 }}
+          >
+            {oneMoreThing.ctaText}
+          </motion.button>
 
           <div className="omt-notes">
             <p className="omt-note omt-note--reward">{oneMoreThing.rewardNote}</p>
