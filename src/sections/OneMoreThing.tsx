@@ -7,7 +7,7 @@ import {
   useMotionValue,
   useSpring,
 } from "motion/react";
-import { content, missionAsset } from "../data/content";
+import { content, missionAsset, kakaoOpenChatHref } from "../data/content";
 import { usePrefersReducedMotion } from "../hooks/useReducedMotion";
 import { SparklesCore } from "../components/SparklesCore";
 import "./oneMoreThing.css";
@@ -296,7 +296,11 @@ export function OneMoreThing() {
           <motion.button
             type="button"
             className="omt-cta"
-            onClick={() => window.alert("준비중입니다~")}
+            onClick={() => {
+              const href = kakaoOpenChatHref();
+              if (href) window.open(href, "_blank", "noopener");
+              else window.alert("준비중입니다~");
+            }}
             whileHover={reduced ? undefined : { scale: 1.05 }}
             whileTap={reduced ? undefined : { scale: 0.97 }}
           >
